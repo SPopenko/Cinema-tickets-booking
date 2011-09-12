@@ -27,13 +27,29 @@
 
 #pragma mark - View lifecycle
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    CLLocationCoordinate2D location =  [map userLocation].location.coordinate;
+    MKCoordinateRegion region;
+    MKCoordinateSpan   span;
+    
+    span.latitudeDelta  = 0.05;
+    span.longitudeDelta = 0.05;
+    
+    
+    region.span = span;
+        
+    CLLocationCoordinate2D location;
+    
+    location.latitude  = 37.152;
+    location.longitude = -122.2;
+    
+    region.center = location;
+    
+    [map setRegion:region animated:YES];
+    [map regionThatFits:region];
     [map setCenterCoordinate:location animated:NO];
 }
 
