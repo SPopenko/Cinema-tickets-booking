@@ -15,6 +15,12 @@
 		1F120B2B14D83D9D00B9A1D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B2A14D83D9D00B9A1D1 /* main.m */; };
 		1F120B2F14D83D9D00B9A1D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B2E14D83D9D00B9A1D1 /* AppDelegate.m */; };
 		1F120B3214D83D9D00B9A1D1 /* Tickets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B3014D83D9D00B9A1D1 /* Tickets.xcdatamodeld */; };
+		1F120B3E14D846EA00B9A1D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B1C14D83D9D00B9A1D1 /* UIKit.framework */; };
+		1F120B3F14D846EA00B9A1D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B1E14D83D9D00B9A1D1 /* Foundation.framework */; };
+		1F120B4014D846EA00B9A1D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B2014D83D9D00B9A1D1 /* CoreGraphics.framework */; };
+		1F120B4614D846EA00B9A1D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F120B4414D846EA00B9A1D1 /* InfoPlist.strings */; };
+		1F120B4814D846EA00B9A1D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B4714D846EA00B9A1D1 /* main.m */; };
+		1F120B5114D84DB600B9A1D1 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B5014D84DB600B9A1D1 /* GHUnitIOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		1F120B2D14D83D9D00B9A1D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1F120B2E14D83D9D00B9A1D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1F120B3114D83D9D00B9A1D1 /* Tickets.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tickets.xcdatamodel; sourceTree = "<group>"; };
+		1F120B3C14D846EA00B9A1D1 /* TicketsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F120B4314D846EA00B9A1D1 /* TicketsTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketsTest-Info.plist"; sourceTree = "<group>"; };
+		1F120B4514D846EA00B9A1D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F120B4714D846EA00B9A1D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1F120B4914D846EA00B9A1D1 /* TicketsTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TicketsTest-Prefix.pch"; sourceTree = "<group>"; };
+		1F120B5014D84DB600B9A1D1 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = TicketsTest/GHUnitIOS.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +56,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F120B3914D846EA00B9A1D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F120B3E14D846EA00B9A1D1 /* UIKit.framework in Frameworks */,
+				1F120B3F14D846EA00B9A1D1 /* Foundation.framework in Frameworks */,
+				1F120B4014D846EA00B9A1D1 /* CoreGraphics.framework in Frameworks */,
+				1F120B5114D84DB600B9A1D1 /* GHUnitIOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -51,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				1F120B2414D83D9D00B9A1D1 /* Tickets */,
+				1F120B4114D846EA00B9A1D1 /* TicketsTest */,
 				1F120B1B14D83D9D00B9A1D1 /* Frameworks */,
 				1F120B1914D83D9D00B9A1D1 /* Products */,
 			);
@@ -60,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				1F120B1814D83D9D00B9A1D1 /* Tickets.app */,
+				1F120B3C14D846EA00B9A1D1 /* TicketsTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +92,7 @@
 		1F120B1B14D83D9D00B9A1D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F120B5014D84DB600B9A1D1 /* GHUnitIOS.framework */,
 				1F120B1C14D83D9D00B9A1D1 /* UIKit.framework */,
 				1F120B1E14D83D9D00B9A1D1 /* Foundation.framework */,
 				1F120B2014D83D9D00B9A1D1 /* CoreGraphics.framework */,
@@ -97,6 +123,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1F120B4114D846EA00B9A1D1 /* TicketsTest */ = {
+			isa = PBXGroup;
+			children = (
+				1F120B4214D846EA00B9A1D1 /* Supporting Files */,
+			);
+			path = TicketsTest;
+			sourceTree = "<group>";
+		};
+		1F120B4214D846EA00B9A1D1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F120B4314D846EA00B9A1D1 /* TicketsTest-Info.plist */,
+				1F120B4414D846EA00B9A1D1 /* InfoPlist.strings */,
+				1F120B4714D846EA00B9A1D1 /* main.m */,
+				1F120B4914D846EA00B9A1D1 /* TicketsTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -115,6 +160,23 @@
 			name = Tickets;
 			productName = Tickets;
 			productReference = 1F120B1814D83D9D00B9A1D1 /* Tickets.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1F120B3B14D846EA00B9A1D1 /* TicketsTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F120B4D14D846EA00B9A1D1 /* Build configuration list for PBXNativeTarget "TicketsTest" */;
+			buildPhases = (
+				1F120B3814D846EA00B9A1D1 /* Sources */,
+				1F120B3914D846EA00B9A1D1 /* Frameworks */,
+				1F120B3A14D846EA00B9A1D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TicketsTest;
+			productName = TicketsTest;
+			productReference = 1F120B3C14D846EA00B9A1D1 /* TicketsTest.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,6 +200,7 @@
 			projectRoot = "";
 			targets = (
 				1F120B1714D83D9D00B9A1D1 /* Tickets */,
+				1F120B3B14D846EA00B9A1D1 /* TicketsTest */,
 			);
 		};
 /* End PBXProject section */
@@ -148,6 +211,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F120B2914D83D9D00B9A1D1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F120B3A14D846EA00B9A1D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F120B4614D846EA00B9A1D1 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +235,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F120B3814D846EA00B9A1D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F120B4814D846EA00B9A1D1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -171,6 +250,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				1F120B2814D83D9D00B9A1D1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1F120B4414D846EA00B9A1D1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F120B4514D846EA00B9A1D1 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -243,6 +330,48 @@
 			};
 			name = Release;
 		};
+		1F120B4E14D846EA00B9A1D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TicketsTest\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TicketsTest/TicketsTest-Prefix.pch";
+				INFOPLIST_FILE = "TicketsTest/TicketsTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1F120B4F14D846EA00B9A1D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TicketsTest\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TicketsTest/TicketsTest-Prefix.pch";
+				INFOPLIST_FILE = "TicketsTest/TicketsTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -260,6 +389,14 @@
 			buildConfigurations = (
 				1F120B3614D83D9D00B9A1D1 /* Debug */,
 				1F120B3714D83D9D00B9A1D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1F120B4D14D846EA00B9A1D1 /* Build configuration list for PBXNativeTarget "TicketsTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F120B4E14D846EA00B9A1D1 /* Debug */,
+				1F120B4F14D846EA00B9A1D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
