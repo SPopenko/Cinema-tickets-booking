@@ -391,6 +391,7 @@
 				1F120B3714D83D9D00B9A1D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F120B4D14D846EA00B9A1D1 /* Build configuration list for PBXNativeTarget "TicketsTest" */ = {
 			isa = XCConfigurationList;
@@ -399,6 +400,7 @@
 				1F120B4F14D846EA00B9A1D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
