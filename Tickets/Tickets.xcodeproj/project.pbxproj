@@ -21,6 +21,9 @@
 		1F120B4614D846EA00B9A1D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F120B4414D846EA00B9A1D1 /* InfoPlist.strings */; };
 		1F120B4814D846EA00B9A1D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B4714D846EA00B9A1D1 /* main.m */; };
 		1F120B5114D84DB600B9A1D1 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B5014D84DB600B9A1D1 /* GHUnitIOS.framework */; };
+		1F17F76714DC010A0040AA98 /* Cinema.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76614DC010A0040AA98 /* Cinema.m */; };
+		1F17F76A14DC010A0040AA98 /* Showtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76914DC010A0040AA98 /* Showtime.m */; };
+		1F17F76D14DC010A0040AA98 /* Seat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76C14DC010A0040AA98 /* Seat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,12 @@
 		1F120B4714D846EA00B9A1D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F120B4914D846EA00B9A1D1 /* TicketsTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TicketsTest-Prefix.pch"; sourceTree = "<group>"; };
 		1F120B5014D84DB600B9A1D1 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = TicketsTest/GHUnitIOS.framework; sourceTree = "<group>"; };
+		1F17F76514DC010A0040AA98 /* Cinema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cinema.h; sourceTree = "<group>"; };
+		1F17F76614DC010A0040AA98 /* Cinema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cinema.m; sourceTree = "<group>"; };
+		1F17F76814DC010A0040AA98 /* Showtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Showtime.h; sourceTree = "<group>"; };
+		1F17F76914DC010A0040AA98 /* Showtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Showtime.m; sourceTree = "<group>"; };
+		1F17F76B14DC010A0040AA98 /* Seat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seat.h; sourceTree = "<group>"; };
+		1F17F76C14DC010A0040AA98 /* Seat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seat.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +116,12 @@
 				1F120B2D14D83D9D00B9A1D1 /* AppDelegate.h */,
 				1F120B2E14D83D9D00B9A1D1 /* AppDelegate.m */,
 				1F120B3014D83D9D00B9A1D1 /* Tickets.xcdatamodeld */,
+				1F17F76B14DC010A0040AA98 /* Seat.h */,
+				1F17F76C14DC010A0040AA98 /* Seat.m */,
+				1F17F76814DC010A0040AA98 /* Showtime.h */,
+				1F17F76914DC010A0040AA98 /* Showtime.m */,
+				1F17F76514DC010A0040AA98 /* Cinema.h */,
+				1F17F76614DC010A0040AA98 /* Cinema.m */,
 				1F120B2514D83D9D00B9A1D1 /* Supporting Files */,
 			);
 			path = Tickets;
@@ -232,6 +247,9 @@
 				1F120B2B14D83D9D00B9A1D1 /* main.m in Sources */,
 				1F120B2F14D83D9D00B9A1D1 /* AppDelegate.m in Sources */,
 				1F120B3214D83D9D00B9A1D1 /* Tickets.xcdatamodeld in Sources */,
+				1F17F76714DC010A0040AA98 /* Cinema.m in Sources */,
+				1F17F76A14DC010A0040AA98 /* Showtime.m in Sources */,
+				1F17F76D14DC010A0040AA98 /* Seat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
