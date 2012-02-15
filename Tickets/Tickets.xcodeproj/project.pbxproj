@@ -37,6 +37,8 @@
 		1F65803A14E940780070839D /* Showtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76914DC010A0040AA98 /* Showtime.m */; };
 		1F65803B14E940780070839D /* Cinema.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76614DC010A0040AA98 /* Cinema.m */; };
 		1FD3B59714E94E2400926D6D /* Tickets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B3014D83D9D00B9A1D1 /* Tickets.xcdatamodeld */; };
+		1FD3B5AA14EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3B5A914EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m */; };
+		1FD3B5B914EBBE7C00926D6D /* TicketsParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FD3B5B814EBBE7C00926D6D /* TicketsParams.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,9 @@
 		1F1DE4B114E5452B00943411 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1F1DE4B214E5452B00943411 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1F1DE4B514E5452B00943411 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		1FD3B5A814EAA3C300926D6D /* UIManagedDocument+CinemaCreating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIManagedDocument+CinemaCreating.h"; sourceTree = "<group>"; };
+		1FD3B5A914EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIManagedDocument+CinemaCreating.m"; sourceTree = "<group>"; };
+		1FD3B5B814EBBE7C00926D6D /* TicketsParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TicketsParams.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +207,9 @@
 				1F1DE4B214E5452B00943411 /* ViewController.m */,
 				1F1DE4B414E5452B00943411 /* ViewController.xib */,
 				1F1DE4A614E5452A00943411 /* Supporting Files */,
+				1FD3B5A814EAA3C300926D6D /* UIManagedDocument+CinemaCreating.h */,
+				1FD3B5A914EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m */,
+				1FD3B5B814EBBE7C00926D6D /* TicketsParams.plist */,
 			);
 			path = iOSTicketsDatabaseGenerator;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 			files = (
 				1F1DE4AA14E5452A00943411 /* InfoPlist.strings in Resources */,
 				1F1DE4B614E5452B00943411 /* ViewController.xib in Resources */,
+				1FD3B5B914EBBE7C00926D6D /* TicketsParams.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +368,7 @@
 				1F65803A14E940780070839D /* Showtime.m in Sources */,
 				1F65803B14E940780070839D /* Cinema.m in Sources */,
 				1FD3B59714E94E2400926D6D /* Tickets.xcdatamodeld in Sources */,
+				1FD3B5AA14EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

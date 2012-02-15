@@ -9,29 +9,26 @@
 #import "ViewController.h"
 #import "CoreData/CoreData.h"
 
-#import "Cinema.h"
-#import "Showtime.h"
-#import "Seat.h"
+#import "UIManagedDocument+CinemaCreating.h"
 
 @implementation ViewController
 
 #pragma mark - methods for work with database
 
-- (void) prepareDatabaseForWorkFilled:(BOOL)filled
+- (void) prepareDatabaseDocument:(UIManagedDocument*)document filledWithData:(BOOL)filled
 {
-    [_ticketsDatabase.managedObjectContext performBlockAndWait:^(void)
+    [document retain];
+    [document.managedObjectContext performBlockAndWait:^(void)
      {
-//         NSEntityDescription* tempentity = [NSEntityDescription entityForName:@"Cinema" inManagedObjectContext:_ticketsDatabase.managedObjectContext];
-         [_ticketsDatabase savePresentedItemChangesWithCompletionHandler:^(NSError* errorOrNil)
+         if (filled) [document addCinemas];
+         
+         [document savePresentedItemChangesWithCompletionHandler:^(NSError* errorOrNil)
           {
               if (errorOrNil) NSLog(@"%@", [errorOrNil description]);
           }];
-         
-         //TODO filled data with object
-
      }];
     _statusLabel.text = [NSString stringWithString:@"Database created"];
-    
+    [document release];
 }
 
 
@@ -78,7 +75,7 @@
              if (success)
              {
                  NSLog(@"Saved");
-                 [self prepareDatabaseForWorkFilled:fillDatabaseWithData];
+                 [self prepareDatabaseDocument:_ticketsDatabase filledWithData:fillDatabaseWithData];
              }
              else NSLog(@"Error");
          }];
@@ -88,13 +85,13 @@
         [_ticketsDatabase openWithCompletionHandler:^(BOOL success)
          {
              NSLog(@"Opened");
-             [self prepareDatabaseForWorkFilled:fillDatabaseWithData];
+             [self prepareDatabaseDocument:_ticketsDatabase filledWithData:fillDatabaseWithData];
          } ];
     }
     else if (_ticketsDatabase.documentState == UIDocumentStateNormal)
     {
         NSLog(@"Ok");
-        [self prepareDatabaseForWorkFilled:fillDatabaseWithData];
+        [self prepareDatabaseDocument:_ticketsDatabase filledWithData:fillDatabaseWithData];
     }
  }
 
