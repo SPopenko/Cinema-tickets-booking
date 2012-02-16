@@ -7,6 +7,7 @@
 //
 
 #import "CinemaViewController.h"
+#import "ShowtimeViewController.h"
 
 @implementation CinemaViewController
 
@@ -49,7 +50,7 @@
                  [cinema copy], [cinema copy], [cinema copy], [cinema copy], [cinema copy], 
                  [cinema copy], [cinema copy], [cinema copy], nil];
     
-    self.clearsSelectionOnViewWillAppear = NO;
+    self.clearsSelectionOnViewWillAppear = YES;
 }
 
 - (void)viewDidUnload
@@ -158,14 +159,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    ShowtimeViewController* svc = [[[ShowtimeViewController alloc] init] autorelease];
+    
+    [self.navigationController pushViewController:svc animated:YES];
 }
 
 @end

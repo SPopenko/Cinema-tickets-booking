@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1F001E6214ED0D0F0023A4D3 /* ShowtimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F001E6014ED0D0F0023A4D3 /* ShowtimeViewController.m */; };
 		1F001E6314ED0D0F0023A4D3 /* ShowtimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F001E6114ED0D0F0023A4D3 /* ShowtimeViewController.xib */; };
+		1F02045814ED792100C0FEED /* SeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02045614ED792100C0FEED /* SeatViewController.m */; };
+		1F02045914ED792100C0FEED /* SeatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F02045714ED792100C0FEED /* SeatViewController.xib */; };
 		1F120B1D14D83D9D00B9A1D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B1C14D83D9D00B9A1D1 /* UIKit.framework */; };
 		1F120B1F14D83D9D00B9A1D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B1E14D83D9D00B9A1D1 /* Foundation.framework */; };
 		1F120B2114D83D9D00B9A1D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B2014D83D9D00B9A1D1 /* CoreGraphics.framework */; };
@@ -49,6 +51,9 @@
 		1F001E5F14ED0D0F0023A4D3 /* ShowtimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowtimeViewController.h; path = Controller/ShowtimeViewController.h; sourceTree = "<group>"; };
 		1F001E6014ED0D0F0023A4D3 /* ShowtimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowtimeViewController.m; path = Controller/ShowtimeViewController.m; sourceTree = "<group>"; };
 		1F001E6114ED0D0F0023A4D3 /* ShowtimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShowtimeViewController.xib; path = Controller/ShowtimeViewController.xib; sourceTree = "<group>"; };
+		1F02045514ED792100C0FEED /* SeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SeatViewController.h; path = Controller/SeatViewController.h; sourceTree = "<group>"; };
+		1F02045614ED792100C0FEED /* SeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SeatViewController.m; path = Controller/SeatViewController.m; sourceTree = "<group>"; };
+		1F02045714ED792100C0FEED /* SeatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SeatViewController.xib; path = Controller/SeatViewController.xib; sourceTree = "<group>"; };
 		1F120B1814D83D9D00B9A1D1 /* Tickets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tickets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F120B1C14D83D9D00B9A1D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F120B1E14D83D9D00B9A1D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -160,6 +165,9 @@
 				1F44519F14ED5550008E1148 /* CinemaViewController.h */,
 				1F4451A014ED5550008E1148 /* CinemaViewController.m */,
 				1F4451A114ED5550008E1148 /* CinemaViewController.xib */,
+				1F02045514ED792100C0FEED /* SeatViewController.h */,
+				1F02045614ED792100C0FEED /* SeatViewController.m */,
+				1F02045714ED792100C0FEED /* SeatViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -354,6 +362,7 @@
 				1F120B2914D83D9D00B9A1D1 /* InfoPlist.strings in Resources */,
 				1F001E6314ED0D0F0023A4D3 /* ShowtimeViewController.xib in Resources */,
 				1F4451A314ED5550008E1148 /* CinemaViewController.xib in Resources */,
+				1F02045914ED792100C0FEED /* SeatViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +399,7 @@
 				1F17F76D14DC010A0040AA98 /* Seat.m in Sources */,
 				1F001E6214ED0D0F0023A4D3 /* ShowtimeViewController.m in Sources */,
 				1F4451A214ED5550008E1148 /* CinemaViewController.m in Sources */,
+				1F02045814ED792100C0FEED /* SeatViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
