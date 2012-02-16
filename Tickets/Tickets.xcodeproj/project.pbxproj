@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F001E6214ED0D0F0023A4D3 /* ShowtimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F001E6014ED0D0F0023A4D3 /* ShowtimeViewController.m */; };
+		1F001E6314ED0D0F0023A4D3 /* ShowtimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F001E6114ED0D0F0023A4D3 /* ShowtimeViewController.xib */; };
 		1F120B1D14D83D9D00B9A1D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B1C14D83D9D00B9A1D1 /* UIKit.framework */; };
 		1F120B1F14D83D9D00B9A1D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B1E14D83D9D00B9A1D1 /* Foundation.framework */; };
 		1F120B2114D83D9D00B9A1D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B2014D83D9D00B9A1D1 /* CoreGraphics.framework */; };
@@ -32,6 +34,8 @@
 		1F1DE4B014E5452B00943411 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DE4AF14E5452B00943411 /* AppDelegate.m */; };
 		1F1DE4B314E5452B00943411 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DE4B214E5452B00943411 /* ViewController.m */; };
 		1F1DE4B614E5452B00943411 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F1DE4B414E5452B00943411 /* ViewController.xib */; };
+		1F4451A214ED5550008E1148 /* CinemaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4451A014ED5550008E1148 /* CinemaViewController.m */; };
+		1F4451A314ED5550008E1148 /* CinemaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4451A114ED5550008E1148 /* CinemaViewController.xib */; };
 		1F65803714E940660070839D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B2214D83D9D00B9A1D1 /* CoreData.framework */; };
 		1F65803914E940780070839D /* Seat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76C14DC010A0040AA98 /* Seat.m */; };
 		1F65803A14E940780070839D /* Showtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76914DC010A0040AA98 /* Showtime.m */; };
@@ -42,6 +46,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F001E5F14ED0D0F0023A4D3 /* ShowtimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowtimeViewController.h; path = Controller/ShowtimeViewController.h; sourceTree = "<group>"; };
+		1F001E6014ED0D0F0023A4D3 /* ShowtimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowtimeViewController.m; path = Controller/ShowtimeViewController.m; sourceTree = "<group>"; };
+		1F001E6114ED0D0F0023A4D3 /* ShowtimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShowtimeViewController.xib; path = Controller/ShowtimeViewController.xib; sourceTree = "<group>"; };
 		1F120B1814D83D9D00B9A1D1 /* Tickets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tickets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F120B1C14D83D9D00B9A1D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F120B1E14D83D9D00B9A1D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -76,6 +83,9 @@
 		1F1DE4B114E5452B00943411 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1F1DE4B214E5452B00943411 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1F1DE4B514E5452B00943411 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		1F44519F14ED5550008E1148 /* CinemaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CinemaViewController.h; path = Controller/CinemaViewController.h; sourceTree = "<group>"; };
+		1F4451A014ED5550008E1148 /* CinemaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CinemaViewController.m; path = Controller/CinemaViewController.m; sourceTree = "<group>"; };
+		1F4451A114ED5550008E1148 /* CinemaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CinemaViewController.xib; path = Controller/CinemaViewController.xib; sourceTree = "<group>"; };
 		1FD3B5A814EAA3C300926D6D /* UIManagedDocument+CinemaCreating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIManagedDocument+CinemaCreating.h"; sourceTree = "<group>"; };
 		1FD3B5A914EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIManagedDocument+CinemaCreating.m"; sourceTree = "<group>"; };
 		1FD3B5B814EBBE7C00926D6D /* TicketsParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TicketsParams.plist; sourceTree = "<group>"; };
@@ -118,6 +128,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F001E4A14EC149A0023A4D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F120B3014D83D9D00B9A1D1 /* Tickets.xcdatamodeld */,
+				1F17F76B14DC010A0040AA98 /* Seat.h */,
+				1F17F76C14DC010A0040AA98 /* Seat.m */,
+				1F17F76814DC010A0040AA98 /* Showtime.h */,
+				1F17F76914DC010A0040AA98 /* Showtime.m */,
+				1F17F76514DC010A0040AA98 /* Cinema.h */,
+				1F17F76614DC010A0040AA98 /* Cinema.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1F001E4B14EC14B70023A4D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1F001E4C14EC14CA0023A4D3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F120B2D14D83D9D00B9A1D1 /* AppDelegate.h */,
+				1F120B2E14D83D9D00B9A1D1 /* AppDelegate.m */,
+				1F001E5F14ED0D0F0023A4D3 /* ShowtimeViewController.h */,
+				1F001E6014ED0D0F0023A4D3 /* ShowtimeViewController.m */,
+				1F001E6114ED0D0F0023A4D3 /* ShowtimeViewController.xib */,
+				1F44519F14ED5550008E1148 /* CinemaViewController.h */,
+				1F4451A014ED5550008E1148 /* CinemaViewController.m */,
+				1F4451A114ED5550008E1148 /* CinemaViewController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		1F120B0D14D83D9D00B9A1D1 = {
 			isa = PBXGroup;
 			children = (
@@ -154,15 +200,9 @@
 		1F120B2414D83D9D00B9A1D1 /* Tickets */ = {
 			isa = PBXGroup;
 			children = (
-				1F120B2D14D83D9D00B9A1D1 /* AppDelegate.h */,
-				1F120B2E14D83D9D00B9A1D1 /* AppDelegate.m */,
-				1F120B3014D83D9D00B9A1D1 /* Tickets.xcdatamodeld */,
-				1F17F76B14DC010A0040AA98 /* Seat.h */,
-				1F17F76C14DC010A0040AA98 /* Seat.m */,
-				1F17F76814DC010A0040AA98 /* Showtime.h */,
-				1F17F76914DC010A0040AA98 /* Showtime.m */,
-				1F17F76514DC010A0040AA98 /* Cinema.h */,
-				1F17F76614DC010A0040AA98 /* Cinema.m */,
+				1F001E4C14EC14CA0023A4D3 /* Controller */,
+				1F001E4B14EC14B70023A4D3 /* View */,
+				1F001E4A14EC149A0023A4D3 /* Model */,
 				1F120B2514D83D9D00B9A1D1 /* Supporting Files */,
 			);
 			path = Tickets;
@@ -312,6 +352,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F120B2914D83D9D00B9A1D1 /* InfoPlist.strings in Resources */,
+				1F001E6314ED0D0F0023A4D3 /* ShowtimeViewController.xib in Resources */,
+				1F4451A314ED5550008E1148 /* CinemaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +388,8 @@
 				1F17F76714DC010A0040AA98 /* Cinema.m in Sources */,
 				1F17F76A14DC010A0040AA98 /* Showtime.m in Sources */,
 				1F17F76D14DC010A0040AA98 /* Seat.m in Sources */,
+				1F001E6214ED0D0F0023A4D3 /* ShowtimeViewController.m in Sources */,
+				1F4451A214ED5550008E1148 /* CinemaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

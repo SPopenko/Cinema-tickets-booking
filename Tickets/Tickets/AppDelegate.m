@@ -8,16 +8,30 @@
 
 #import "AppDelegate.h"
 
+#import "CinemaViewController.h"
+#import "ShowtimeViewController.h"
+
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize tabBarController = _tabBarController;
+
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
+- (UINavigationController*) navigationControllerFromTableViewController:(UITableViewController*) viewController
+{
+    UINavigationController* result = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
+    
+    return result;
+}
+
+
 - (void)dealloc
 {
     [_window release];
+    [_tabBarController release];
     [__managedObjectContext release];
     [__managedObjectModel release];
     [__persistentStoreCoordinator release];
@@ -27,9 +41,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+
+    UIViewController *cinemaViewController = [self navigationControllerFromTableViewController:[[[CinemaViewController alloc] initWithNibName:@"CinemaViewController" bundle:nil]autorelease]];
+    UIViewController *showtimeViewController = [self navigationControllerFromTableViewController:[[[ShowtimeViewController alloc] initWithNibName:@"ShowtimeViewController" bundle:nil]autorelease]] ;
+    self.tabBarController = [[[UITabBarController alloc] init] autorelease];
+
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:cinemaViewController, showtimeViewController, nil];
+    
+    self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
