@@ -206,6 +206,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ShowtimeViewController* svc = [[[ShowtimeViewController alloc] init] autorelease];
+    svc.managedObjectContext = self.managedObjectContext;
     
     [self.navigationController pushViewController:svc animated:YES];
 }

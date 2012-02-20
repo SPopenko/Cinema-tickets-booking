@@ -43,13 +43,14 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 
     CinemaViewController *cinemaViewController = [[[CinemaViewController alloc] initWithNibName:@"CinemaViewController" bundle:nil]autorelease];
-    UIViewController *showtimeViewController = [self navigationControllerFromTableViewController:[[[ShowtimeViewController alloc] initWithNibName:@"ShowtimeViewController" bundle:nil]autorelease]] ;
+    ShowtimeViewController *showtimeViewController = [[[ShowtimeViewController alloc] initWithNibName:@"ShowtimeViewController" bundle:nil]autorelease] ;
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
 
-    cinemaViewController.managedObjectContext = self.managedObjectContext;
-    
+    cinemaViewController.managedObjectContext   = self.managedObjectContext;
+    showtimeViewController.managedObjectContext = self.managedObjectContext;
+        
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:[self navigationControllerFromTableViewController:cinemaViewController], 
-                                             showtimeViewController, nil];
+                                             [self navigationControllerFromTableViewController:showtimeViewController], nil];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];

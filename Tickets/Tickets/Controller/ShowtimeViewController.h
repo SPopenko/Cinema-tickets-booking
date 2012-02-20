@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ShowtimeViewController : UITableViewController
-{
-    NSArray* showtimes;
-}
+@interface ShowtimeViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, retain) NSFetchedResultsController* fetchedResultsController;
+@property (nonatomic, retain) NSManagedObjectContext* managedObjectContext;
 
 @end
