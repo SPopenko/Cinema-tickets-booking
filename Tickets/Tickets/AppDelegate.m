@@ -42,11 +42,14 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 
-    UIViewController *cinemaViewController = [self navigationControllerFromTableViewController:[[[CinemaViewController alloc] initWithNibName:@"CinemaViewController" bundle:nil]autorelease]];
+    CinemaViewController *cinemaViewController = [[[CinemaViewController alloc] initWithNibName:@"CinemaViewController" bundle:nil]autorelease];
     UIViewController *showtimeViewController = [self navigationControllerFromTableViewController:[[[ShowtimeViewController alloc] initWithNibName:@"ShowtimeViewController" bundle:nil]autorelease]] ;
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
 
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:cinemaViewController, showtimeViewController, nil];
+    cinemaViewController.managedObjectContext = self.managedObjectContext;
+    
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:[self navigationControllerFromTableViewController:cinemaViewController], 
+                                             showtimeViewController, nil];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
@@ -158,6 +161,19 @@
     }
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Tickets.sqlite"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL.path])
+    {
+        NSURL* dbURL = [[NSBundle mainBundle] URLForResource:@"Tickets" withExtension:@"sqlite"];
+        
+        NSError* error = nil;
+        [[NSFileManager defaultManager] copyItemAtURL:dbURL toURL:storeURL error:&error];
+        
+        if (error)
+        {
+            NSLog(@"%@",[error userInfo]);
+        }
+    }
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

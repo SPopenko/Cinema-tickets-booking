@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
-@interface CinemaViewController : UITableViewController
-{
-    NSArray* cinemas;
-}
+@interface CinemaViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, retain) NSFetchedResultsController* fetchedResultsController;
+@property (nonatomic, retain) NSManagedObjectContext* managedObjectContext;
+
 @end
