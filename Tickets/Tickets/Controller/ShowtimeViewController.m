@@ -9,12 +9,51 @@
 #import "ShowtimeViewController.h"
 #import "SeatViewController.h"
 
+#import <CoreData/CoreData.h>
+
 #import "Showtime.h"
+#import "Cinema.h"
 
 @implementation ShowtimeViewController
 
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize managedObjectContext     = _managedObjectContext;
+
+@synthesize cinema = _cinema;
+
+- (void) setCinema:(Cinema *)cinema
+{
+    
+    if (_cinema == cinema && self.fetchedResultsController != nil) return;
+    
+    _cinema = [cinema retain];
+        
+    NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Showtime"];
+    NSSortDescriptor* sortShowtime  = [[NSSortDescriptor alloc] initWithKey:@"showtimeName" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSSortDescriptor* sortCinema    = [[NSSortDescriptor alloc] initWithKey:@"cinema.name"  ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    
+    if (cinema)
+    {
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"cinema.name like %@", cinema.name];
+        
+        request.predicate = predicate;
+    }
+    
+    request.sortDescriptors = [NSArray arrayWithObjects:sortCinema, sortShowtime, nil];
+    
+    NSFetchedResultsController* fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                                               managedObjectContext:self.managedObjectContext
+                                                                                                 sectionNameKeyPath:nil
+                                                                                                          cacheName:@"ShowtimeCache"];
+    
+    self.fetchedResultsController = fetchedResultsController;
+    
+    [request      release];
+    [sortCinema   release];
+    [sortShowtime release];
+    
+    [fetchedResultsController release];
+}
 
 - (void) setFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController
 {
@@ -74,23 +113,8 @@
     
     self.clearsSelectionOnViewWillAppear = YES;
     
-    NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Showtime"];
-    NSSortDescriptor* sortShowtime  = [[NSSortDescriptor alloc] initWithKey:@"showtimeName" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-    NSSortDescriptor* sortCinema    = [[NSSortDescriptor alloc] initWithKey:@"cinema.name"  ascending:YES selector:@selector(caseInsensitiveCompare:)];
-    request.sortDescriptors = [NSArray arrayWithObjects:sortCinema, sortShowtime, nil];
-    
-    NSFetchedResultsController* fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                                               managedObjectContext:self.managedObjectContext
-                                                                                                 sectionNameKeyPath:nil
-                                                                                                          cacheName:@"ShowtimeCache"];
-    
-    self.fetchedResultsController = fetchedResultsController;
-    
-    [request      release];
-    [sortCinema   release];
-    [sortShowtime release];
-    [fetchedResultsController release];
-    
+    //This code looks strange, but it provide the easiest way to load data on view load for this code
+    if (self.cinema == nil) self.cinema = nil;
 }
 
 - (void)viewDidUnload

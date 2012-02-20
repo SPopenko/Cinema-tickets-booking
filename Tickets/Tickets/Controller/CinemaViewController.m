@@ -207,6 +207,7 @@
 {
     ShowtimeViewController* svc = [[[ShowtimeViewController alloc] init] autorelease];
     svc.managedObjectContext = self.managedObjectContext;
+    svc.cinema = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     [self.navigationController pushViewController:svc animated:YES];
 }

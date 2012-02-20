@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class Cinema;
+
 @interface ShowtimeViewController : UITableViewController<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, retain) NSFetchedResultsController* fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext* managedObjectContext;
+
+@property (nonatomic, retain) Cinema* cinema;
 
 @end
