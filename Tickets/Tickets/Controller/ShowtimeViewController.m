@@ -27,23 +27,29 @@
     if (_cinema == cinema && self.fetchedResultsController != nil) return;
     
     _cinema = [cinema retain];
-        
+    
+    if (cinema) self.title = cinema.name;
+    
     NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Showtime"];
     NSSortDescriptor* sortShowtime  = [[NSSortDescriptor alloc] initWithKey:@"showtimeName" ascending:YES selector:@selector(caseInsensitiveCompare:)];
     NSSortDescriptor* sortCinema    = [[NSSortDescriptor alloc] initWithKey:@"cinema.name"  ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSString* sectionNameKeyPath = nil;
     
+    //Creating predicate for displaying showtime in selected cinema
     if (cinema)
     {
         NSPredicate* predicate = [NSPredicate predicateWithFormat:@"cinema.name like %@", cinema.name];
-        
+
         request.predicate = predicate;
     }
+    
+    if (!cinema) sectionNameKeyPath = [NSString stringWithFormat:@"cinema.name"];
     
     request.sortDescriptors = [NSArray arrayWithObjects:sortCinema, sortShowtime, nil];
     
     NSFetchedResultsController* fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                                                managedObjectContext:self.managedObjectContext
-                                                                                                 sectionNameKeyPath:nil
+                                                                                                 sectionNameKeyPath:sectionNameKeyPath
                                                                                                           cacheName:@"ShowtimeCache"];
     
     self.fetchedResultsController = fetchedResultsController;
@@ -148,6 +154,12 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Display headers
+- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [[self.fetchedResultsController.sections objectAtIndex:section] name];
 }
 
 #pragma mark - Table view data source
