@@ -9,7 +9,80 @@
 #import "ShowtimeViewController.h"
 #import "SeatViewController.h"
 
+#import <CoreData/CoreData.h>
+
+#import "Showtime.h"
+#import "Cinema.h"
+
 @implementation ShowtimeViewController
+
+@synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize managedObjectContext     = _managedObjectContext;
+
+@synthesize cinema = _cinema;
+
+- (void) setCinema:(Cinema *)cinema
+{
+    
+    if (_cinema == cinema && self.fetchedResultsController != nil) return;
+    
+    _cinema = [cinema retain];
+    
+    if (cinema) self.title = cinema.name;
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Showtime"];
+    NSSortDescriptor* sortShowtime  = [[NSSortDescriptor alloc] initWithKey:@"showtimeName" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSSortDescriptor* sortCinema    = [[NSSortDescriptor alloc] initWithKey:@"cinema.name"  ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSString* sectionNameKeyPath = nil;
+    
+    //Creating predicate for displaying showtime in selected cinema
+    if (cinema)
+    {
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"cinema.name like %@", cinema.name];
+
+        request.predicate = predicate;
+    }
+    
+    if (!cinema) sectionNameKeyPath = [NSString stringWithFormat:@"cinema.name"];
+    
+    request.sortDescriptors = [NSArray arrayWithObjects:sortCinema, sortShowtime, nil];
+    
+    NSFetchedResultsController* fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                                               managedObjectContext:self.managedObjectContext
+                                                                                                 sectionNameKeyPath:sectionNameKeyPath
+                                                                                                          cacheName:@"ShowtimeCache"];
+    
+    self.fetchedResultsController = fetchedResultsController;
+    
+    [request      release];
+    [sortCinema   release];
+    [sortShowtime release];
+    
+    [fetchedResultsController release];
+}
+
+- (void) setFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController
+{
+    _fetchedResultsController = [fetchedResultsController retain];
+    
+    NSError* error = nil;
+    [fetchedResultsController performFetch:&error];
+    
+    if (error)
+    {
+        NSLog(@"%@", [error userInfo]);
+    }
+    
+    [self.tableView reloadData];
+}
+
+- (void) dealloc
+{
+    [_fetchedResultsController release];
+    [_managedObjectContext     release];
+    
+    [super dealloc];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,14 +117,10 @@
 {
     [super viewDidLoad];
     
-    //TODO: Remove this code after connecting table view with Core Data Source
-    NSString* showtime = [NSString stringWithString:@"Showtime"];
-    showtimes = [[NSArray alloc] initWithObjects:[showtime copy], [showtime copy], [showtime copy],
-                 [showtime copy], [showtime copy], [showtime copy], [showtime copy], [showtime copy],
-                 [showtime copy], [showtime copy], [showtime copy], [showtime copy], [showtime copy], 
-                 [showtime copy], [showtime copy], [showtime copy], nil];
-    
     self.clearsSelectionOnViewWillAppear = YES;
+    
+    //This code looks strange, but it provide the easiest way to load data on view load for this code
+    if (self.cinema == nil) self.cinema = nil;
 }
 
 - (void)viewDidUnload
@@ -64,8 +133,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
-    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -89,18 +156,24 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - Display headers
+- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [[self.fetchedResultsController.sections objectAtIndex:section] name];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return [self.fetchedResultsController.sections count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [showtimes count];
+    return [[self.fetchedResultsController.sections objectAtIndex:section] numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,9 +185,15 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    cell.textLabel.text = [showtimes objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Showtime time"];
-    // Configure the cell...
+    Showtime* showtime  = [[self.fetchedResultsController objectAtIndexPath:indexPath] retain];
+    NSDateFormatter* df = [NSDateFormatter new];
+    
+    [df setTimeStyle:NSDateFormatterShortStyle];
+    
+    cell.textLabel.text       = showtime.showtimeName;
+    cell.detailTextLabel.text = (showtime.showtimeTime) ? [df stringFromDate:showtime.showtimeTime]:@"N/A";
+    
+    [showtime release];
     
     return cell;
 }
@@ -163,8 +242,62 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SeatViewController* svc = [[[SeatViewController alloc] init] autorelease];
+    svc.managedObjectContext = self.managedObjectContext;
+    svc.showtime = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     [self.navigationController pushViewController:svc animated:YES];
 }
+
+#pragma mark - Fetched results controller delegate
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
+}
+
 
 @end

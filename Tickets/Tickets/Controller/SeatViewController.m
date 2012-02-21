@@ -8,8 +8,29 @@
 
 #import "SeatViewController.h"
 
+#import "Showtime.h"
+#import "Seat.h"
+
 @implementation SeatViewController
 
+//@synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize managedObjectContext     = _managedObjectContext;
+
+@synthesize showtime = _showtime;
+
+#pragma mark - Setting Showtime
+- (void) setShowtime:(Showtime *)showtime
+{
+    _showtime = [showtime retain];
+    
+    if (showtime)
+    {
+        self.title = showtime.showtimeName;
+    }
+    
+}
+
+#pragma mark - View prepare
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -21,10 +42,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
@@ -32,20 +50,68 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Seat"];
+    NSPredicate* predicate  = [NSPredicate predicateWithFormat:@"showtime = %@", self.showtime];
+    NSSortDescriptor* sort  = [NSSortDescriptor sortDescriptorWithKey:@"seatNumber" ascending:YES];
+    
+    request.predicate = predicate;
+    request.sortDescriptors = [NSArray arrayWithObjects:sort, nil];
+    
+    NSFetchedResultsController* fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                                               managedObjectContext:self.managedObjectContext
+                                                                                                 sectionNameKeyPath:nil
+                                                                                                          cacheName:@"Seat"];
+    
+    NSError* error = nil;
+    if ([fetchedResultsController performFetch:&error])
+    {
+        NSMutableString* seats = nil;
+        
+        for (Seat* seat in [fetchedResultsController fetchedObjects])
+        {
+            if (seats)
+            {
+                [seats appendFormat:@", %d", [seat.seatNumber intValue]];
+            }
+            else
+            {
+                seats = [NSMutableString stringWithFormat:@"%d", [seat.seatNumber intValue]];
+            }
+        }
+        
+        busySeatsLabel.text = [NSString stringWithFormat:@"Busy seats numbers:\n%@", seats ? seats : [NSString string]];
+    }
+    
+    if (error)
+    {
+        NSLog(@"%@", [error userInfo]);
+    }
+    
+    [fetchedResultsController release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - dealloc
+- (void) dealloc
+{
+    [_managedObjectContext release];
+    [_showtime release];
+    [super dealloc];
 }
 
 @end

@@ -9,7 +9,34 @@
 #import "CinemaViewController.h"
 #import "ShowtimeViewController.h"
 
+#import "Cinema.h"
+
 @implementation CinemaViewController
+
+@synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize managedObjectContext     = _managedObjectContext;
+
+
+#pragma mark - Work with Fetch controller
+- (void) setFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController
+{
+    _fetchedResultsController = [fetchedResultsController retain];
+
+    
+    NSError* error = nil;
+    [fetchedResultsController performFetch:&error];
+    
+    if (error)
+    {
+        NSLog(@"%@", [error userInfo]);
+    }
+    
+    [self.tableView reloadData];
+}
+
+
+
+#pragma mark - UITableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,13 +71,23 @@
 {
     [super viewDidLoad];
     
-    NSString* cinema = [NSString stringWithString:@"Cinema"];
-    cinemas = [[NSArray alloc] initWithObjects:[cinema copy], [cinema copy], [cinema copy],
-                 [cinema copy], [cinema copy], [cinema copy], [cinema copy], [cinema copy],
-                 [cinema copy], [cinema copy], [cinema copy], [cinema copy], [cinema copy], 
-                 [cinema copy], [cinema copy], [cinema copy], nil];
-    
     self.clearsSelectionOnViewWillAppear = YES;
+    
+    //TODO: init fetched results controller
+    NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Cinema"];
+    NSSortDescriptor* sort  = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    request.sortDescriptors = [NSArray arrayWithObject:sort];
+    
+    NSFetchedResultsController* fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                                               managedObjectContext:self.managedObjectContext
+                                                                                                 sectionNameKeyPath:nil
+                                                                                                          cacheName:@"Cinema"];
+    
+    self.fetchedResultsController = fetchedResultsController;
+    
+    [request release];
+    [sort    release];
+    [fetchedResultsController release];
 }
 
 - (void)viewDidUnload
@@ -88,16 +125,23 @@
 
 #pragma mark - Table view data source
 
+- (void) dealloc
+{
+    [_managedObjectContext release];
+    [_fetchedResultsController release];
+    [super dealloc];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return [[self.fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [cinemas count];
+    return [[[self.fetchedResultsController sections] objectAtIndex:section] numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -110,8 +154,10 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = [cinemas objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Showtimes count"];
+    Cinema* cinema = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    cell.textLabel.text = cinema.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d showtime(s)", [cinema.showtimes count]];
     
     return cell;
 }
@@ -160,8 +206,62 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ShowtimeViewController* svc = [[[ShowtimeViewController alloc] init] autorelease];
+    svc.managedObjectContext = self.managedObjectContext;
+    svc.cinema = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     [self.navigationController pushViewController:svc animated:YES];
 }
+
+#pragma mark - Fetched results controller delegate
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
+}
+
 
 @end
