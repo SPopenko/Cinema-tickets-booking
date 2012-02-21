@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class Showtime;
+
 @interface SeatViewController : UIViewController
+{
+    IBOutlet UITextView* busySeatsLabel;
+}
+
+@property (retain, nonatomic) NSManagedObjectContext* managedObjectContext;
+
+@property (retain, nonatomic) Showtime* showtime;
 
 @end

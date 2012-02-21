@@ -242,6 +242,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SeatViewController* svc = [[[SeatViewController alloc] init] autorelease];
+    svc.managedObjectContext = self.managedObjectContext;
+    svc.showtime = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     [self.navigationController pushViewController:svc animated:YES];
 }
