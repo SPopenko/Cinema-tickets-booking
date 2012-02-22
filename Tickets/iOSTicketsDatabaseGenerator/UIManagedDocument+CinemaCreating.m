@@ -17,7 +17,7 @@
 #define kCinemaLatitude    @"latitude"
 #define kCinemaSeatNumbers @"numberOfSeats"
 #define kShowtimeName      @"showtimeName"
-#define kShowtimeNumber    @"showtimeNumber"
+#define kShowtimeNumber    @"showtimeNumber" 
 
 #define kLoadLocations         @"Locations"
 #define kLoadCinemasData       @"CinemaData"
@@ -44,10 +44,16 @@
 
     for ( int i = 0; i < [numberOfShowtimes intValue]; i++)
     {
+        //showtime time 08:00 AM + (15 * 60 * i / (numberOfShowtimes - 1)) * 60 
+        NSTimeInterval timeI = 8 * 60 * 60;
+        if ([numberOfShowtimes intValue] > 1) timeI += (15 * 60 * i / ([numberOfShowtimes intValue] - 1)) * 60;
+        NSDate* showtimeTime  = [[NSDate alloc] initWithTimeIntervalSince1970:timeI];
+        
         showtime = [NSEntityDescription insertNewObjectForEntityForName:@"Showtime"
                                              inManagedObjectContext:self.managedObjectContext];
         showtime.showtimeName = ([params objectForKey:kShowtimeName]) ? [params objectForKey:kShowtimeName]: [NSString stringWithString:@"Showtime"];
         showtime.showtimeName = [showtime.showtimeName stringByAppendingFormat:@"%d", (i+1)];
+        showtime.showtimeTime = showtimeTime;
         
         [self addShowtimesObject:showtime];
         
@@ -59,6 +65,7 @@
             seat.seatNumber = [ NSNumber numberWithInt:(i*10)];
             [showtime addBusySeatsObject:seat];
         }
+        [showtimeTime release];
     }
 }
 
@@ -99,7 +106,7 @@
     {
         for (NSUInteger i = 0; i < cinemasData.count; i++)
         {
-            cinemaParams = [NSMutableDictionary dictionary];
+            cinemaParams          = [NSMutableDictionary dictionary];
             
             NSDictionary* coord = [locations objectForKey:location];
             NSNumber* longitude = [coord objectForKey:kLoadLocationLongitude];
