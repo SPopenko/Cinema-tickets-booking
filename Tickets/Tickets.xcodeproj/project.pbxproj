@@ -46,6 +46,8 @@
 		1FD3B59714E94E2400926D6D /* Tickets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B3014D83D9D00B9A1D1 /* Tickets.xcdatamodeld */; };
 		1FD3B5AA14EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3B5A914EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m */; };
 		1FD3B5B914EBBE7C00926D6D /* TicketsParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FD3B5B814EBBE7C00926D6D /* TicketsParams.plist */; };
+		1FEF3C7814F532D00040A016 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEF3C7714F532D00040A016 /* CoreLocation.framework */; };
+		1FEF3C7C14F53F0E0040A016 /* CLLocationManager+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF3C7B14F53F0E0040A016 /* CLLocationManager+Init.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,9 @@
 		1FD3B5A814EAA3C300926D6D /* UIManagedDocument+CinemaCreating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIManagedDocument+CinemaCreating.h"; sourceTree = "<group>"; };
 		1FD3B5A914EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIManagedDocument+CinemaCreating.m"; sourceTree = "<group>"; };
 		1FD3B5B814EBBE7C00926D6D /* TicketsParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TicketsParams.plist; sourceTree = "<group>"; };
+		1FEF3C7714F532D00040A016 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1FEF3C7A14F53F0E0040A016 /* CLLocationManager+Init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Init.h"; sourceTree = "<group>"; };
+		1FEF3C7B14F53F0E0040A016 /* CLLocationManager+Init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Init.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FEF3C7814F532D00040A016 /* CoreLocation.framework in Frameworks */,
 				1F120B1D14D83D9D00B9A1D1 /* UIKit.framework in Frameworks */,
 				1F120B1F14D83D9D00B9A1D1 /* Foundation.framework in Frameworks */,
 				1F120B2114D83D9D00B9A1D1 /* CoreGraphics.framework in Frameworks */,
@@ -170,6 +176,8 @@
 				1F02045514ED792100C0FEED /* SeatViewController.h */,
 				1F02045614ED792100C0FEED /* SeatViewController.m */,
 				1F02045714ED792100C0FEED /* SeatViewController.xib */,
+				1FEF3C7A14F53F0E0040A016 /* CLLocationManager+Init.h */,
+				1FEF3C7B14F53F0E0040A016 /* CLLocationManager+Init.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -177,6 +185,7 @@
 		1F120B0D14D83D9D00B9A1D1 = {
 			isa = PBXGroup;
 			children = (
+				1FEF3C7714F532D00040A016 /* CoreLocation.framework */,
 				1F120B2414D83D9D00B9A1D1 /* Tickets */,
 				1F120B4114D846EA00B9A1D1 /* TicketsTest */,
 				1F1DE4A514E5452A00943411 /* iOSTicketsDatabaseGenerator */,
@@ -404,6 +413,7 @@
 				1F001E6214ED0D0F0023A4D3 /* ShowtimeViewController.m in Sources */,
 				1F4451A214ED5550008E1148 /* CinemaViewController.m in Sources */,
 				1F02045814ED792100C0FEED /* SeatViewController.m in Sources */,
+				1FEF3C7C14F53F0E0040A016 /* CLLocationManager+Init.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

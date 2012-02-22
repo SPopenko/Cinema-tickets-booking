@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface CinemaViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+@interface CinemaViewController : UITableViewController<NSFetchedResultsControllerDelegate, CLLocationManagerDelegate>
+{
+    CLLocationManager* _locationManager;
+}
 
 @property (nonatomic, retain) NSFetchedResultsController* fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext* managedObjectContext;

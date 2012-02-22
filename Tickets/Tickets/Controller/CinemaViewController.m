@@ -9,9 +9,13 @@
 #import "CinemaViewController.h"
 #import "ShowtimeViewController.h"
 
+#import "CLLocationManager+Init.h"
+
 #import "Cinema.h"
 
 @implementation CinemaViewController
+
+const double coordDelta = 0.01;
 
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize managedObjectContext     = _managedObjectContext;
@@ -22,7 +26,6 @@
 {
     _fetchedResultsController = [fetchedResultsController retain];
 
-    
     NSError* error = nil;
     [fetchedResultsController performFetch:&error];
     
@@ -34,6 +37,30 @@
     [self.tableView reloadData];
 }
 
+- (void) updateCinemaList
+{
+    NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Cinema"];
+    NSSortDescriptor* sort  = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    request.sortDescriptors = [NSArray arrayWithObject:sort];
+    CLLocationCoordinate2D coord = [[_locationManager location] coordinate];
+    
+    NSPredicate* locationPredicate = [NSPredicate predicateWithFormat:@"(latitude < %f) AND (latitude > %f) AND (longitude < %f) AND (longitude > %f)",
+                                      coord.latitude  + coordDelta, coord.latitude  - coordDelta, 
+                                      coord.longitude + coordDelta, coord.longitude - coordDelta];
+    
+    request.predicate = locationPredicate;
+    
+    NSFetchedResultsController* fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                                               managedObjectContext:self.managedObjectContext
+                                                                                                 sectionNameKeyPath:nil
+                                                                                                          cacheName:@"Cinema"];
+    
+    self.fetchedResultsController = fetchedResultsController;
+    
+    [request release];
+    [sort    release];
+    [fetchedResultsController release];
+}
 
 
 #pragma mark - UITableViewController
@@ -73,21 +100,8 @@
     
     self.clearsSelectionOnViewWillAppear = YES;
     
-    //TODO: init fetched results controller
-    NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Cinema"];
-    NSSortDescriptor* sort  = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-    request.sortDescriptors = [NSArray arrayWithObject:sort];
-    
-    NSFetchedResultsController* fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                                               managedObjectContext:self.managedObjectContext
-                                                                                                 sectionNameKeyPath:nil
-                                                                                                          cacheName:@"Cinema"];
-    
-    self.fetchedResultsController = fetchedResultsController;
-    
-    [request release];
-    [sort    release];
-    [fetchedResultsController release];
+    _locationManager = [[CLLocationManager alloc] initWithDelegate:self];
+    [_locationManager startUpdatingLocation];
 }
 
 - (void)viewDidUnload
@@ -127,6 +141,7 @@
 
 - (void) dealloc
 {
+    [_locationManager release];
     [_managedObjectContext release];
     [_fetchedResultsController release];
     [super dealloc];
@@ -263,5 +278,10 @@
     [self.tableView endUpdates];
 }
 
+#pragma mark - Location Manager delegate
+- (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    [self updateCinemaList];
+}
 
 @end
