@@ -31,8 +31,9 @@
     if (cinema) self.title = cinema.name;
     
     NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Showtime"];
-    NSSortDescriptor* sortShowtime  = [[NSSortDescriptor alloc] initWithKey:@"showtimeName" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-    NSSortDescriptor* sortCinema    = [[NSSortDescriptor alloc] initWithKey:@"cinema.name"  ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSSortDescriptor* sortShowtimeTime = [[NSSortDescriptor alloc] initWithKey:@"showtimeTime" ascending:YES];
+    NSSortDescriptor* sortShowtime     = [[NSSortDescriptor alloc] initWithKey:@"showtimeName" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSSortDescriptor* sortCinema       = [[NSSortDescriptor alloc] initWithKey:@"cinema.name"  ascending:YES selector:@selector(caseInsensitiveCompare:)];
     NSString* sectionNameKeyPath = nil;
     
     //Creating predicate for displaying showtime in selected cinema
@@ -45,7 +46,7 @@
     
     if (!cinema) sectionNameKeyPath = [NSString stringWithFormat:@"cinema.name"];
     
-    request.sortDescriptors = [NSArray arrayWithObjects:sortCinema, sortShowtime, nil];
+    request.sortDescriptors = [NSArray arrayWithObjects:sortCinema, sortShowtimeTime, sortShowtime, nil];
     
     NSFetchedResultsController* fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                                                managedObjectContext:self.managedObjectContext
@@ -54,10 +55,10 @@
     
     self.fetchedResultsController = fetchedResultsController;
     
-    [request      release];
-    [sortCinema   release];
-    [sortShowtime release];
-    
+    [request          release];
+    [sortCinema       release];
+    [sortShowtime     release];
+    [sortShowtimeTime release];
     [fetchedResultsController release];
 }
 
@@ -189,7 +190,7 @@
     NSDateFormatter* df = [NSDateFormatter new];
     
     [df setTimeStyle:NSDateFormatterShortStyle];
-    
+    [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     cell.textLabel.text       = showtime.showtimeName;
     cell.detailTextLabel.text = (showtime.showtimeTime) ? [df stringFromDate:showtime.showtimeTime]:@"N/A";
     
