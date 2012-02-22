@@ -9,6 +9,7 @@
 #import "ShowtimeViewController.h"
 #import "SeatViewController.h"
 
+#import "CLLocationManager+Init.h"
 #import <CoreData/CoreData.h>
 
 #import "Showtime.h"
@@ -16,20 +17,15 @@
 
 @implementation ShowtimeViewController
 
+const double coordDeltaS = 0.01;
+
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize managedObjectContext     = _managedObjectContext;
 
 @synthesize cinema = _cinema;
 
-- (void) setCinema:(Cinema *)cinema
+- (void) updateShowtimeList
 {
-    
-    if (_cinema == cinema && self.fetchedResultsController != nil) return;
-    
-    _cinema = [cinema retain];
-    
-    if (cinema) self.title = cinema.name;
-    
     NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Showtime"];
     NSSortDescriptor* sortShowtimeTime = [[NSSortDescriptor alloc] initWithKey:@"showtimeTime" ascending:YES];
     NSSortDescriptor* sortShowtime     = [[NSSortDescriptor alloc] initWithKey:@"showtimeName" ascending:YES selector:@selector(caseInsensitiveCompare:)];
@@ -37,14 +33,25 @@
     NSString* sectionNameKeyPath = nil;
     
     //Creating predicate for displaying showtime in selected cinema
-    if (cinema)
+    if (self.cinema)
     {
-        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"cinema.name like %@", cinema.name];
-
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"cinema = %@", self.cinema];
+        
         request.predicate = predicate;
     }
+    else if (_locationManager.location)
+    {
+        CLLocationCoordinate2D coord = [[_locationManager location] coordinate];
+        
+        NSPredicate* locationPredicate = [NSPredicate predicateWithFormat:@"(cinema.latitude < %f) AND (cinema.latitude > %f) AND (cinema.longitude < %f) AND (cinema.longitude > %f)",
+                                          coord.latitude  + coordDeltaS, coord.latitude  - coordDeltaS, 
+                                          coord.longitude + coordDeltaS, coord.longitude - coordDeltaS];
+        
+        request.predicate = locationPredicate;
+
+    }
     
-    if (!cinema) sectionNameKeyPath = [NSString stringWithFormat:@"cinema.name"];
+    if (!self.cinema) sectionNameKeyPath = [NSString stringWithFormat:@"cinema.name"];
     
     request.sortDescriptors = [NSArray arrayWithObjects:sortCinema, sortShowtimeTime, sortShowtime, nil];
     
@@ -60,6 +67,21 @@
     [sortShowtime     release];
     [sortShowtimeTime release];
     [fetchedResultsController release];
+
+
+}
+
+- (void) setCinema:(Cinema *)cinema
+{
+    
+    if (_cinema == cinema && self.fetchedResultsController != nil) return;
+    
+    _cinema = [cinema retain];
+    
+    if (cinema) self.title = cinema.name;
+    
+    [self updateShowtimeList];
+    
 }
 
 - (void) setFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController
@@ -120,6 +142,8 @@
     
     self.clearsSelectionOnViewWillAppear = YES;
     
+    _locationManager = [[CLLocationManager alloc] initWithDelegate:self];
+    [_locationManager startUpdatingLocation];
     //This code looks strange, but it provide the easiest way to load data on view load for this code
     if (self.cinema == nil) self.cinema = nil;
 }
@@ -300,5 +324,10 @@
     [self.tableView endUpdates];
 }
 
+#pragma mark - Location manager delegate
+- (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    [self updateShowtimeList];
+}
 
 @end

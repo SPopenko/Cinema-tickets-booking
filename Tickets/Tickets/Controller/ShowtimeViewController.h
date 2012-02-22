@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <CoreLocation/CoreLocation.h>
 @class Cinema;
 
-@interface ShowtimeViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+@interface ShowtimeViewController : UITableViewController<NSFetchedResultsControllerDelegate, CLLocationManagerDelegate>
+{
+    CLLocationManager* _locationManager;
+}
 
 @property (nonatomic, retain) NSFetchedResultsController* fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext* managedObjectContext;
