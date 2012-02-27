@@ -19,16 +19,12 @@
 		1F120B2914D83D9D00B9A1D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F120B2714D83D9D00B9A1D1 /* InfoPlist.strings */; };
 		1F120B2B14D83D9D00B9A1D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B2A14D83D9D00B9A1D1 /* main.m */; };
 		1F120B2F14D83D9D00B9A1D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B2E14D83D9D00B9A1D1 /* AppDelegate.m */; };
-		1F120B3214D83D9D00B9A1D1 /* Tickets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B3014D83D9D00B9A1D1 /* Tickets.xcdatamodeld */; };
 		1F120B3E14D846EA00B9A1D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B1C14D83D9D00B9A1D1 /* UIKit.framework */; };
 		1F120B3F14D846EA00B9A1D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B1E14D83D9D00B9A1D1 /* Foundation.framework */; };
 		1F120B4014D846EA00B9A1D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B2014D83D9D00B9A1D1 /* CoreGraphics.framework */; };
 		1F120B4614D846EA00B9A1D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F120B4414D846EA00B9A1D1 /* InfoPlist.strings */; };
 		1F120B4814D846EA00B9A1D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B4714D846EA00B9A1D1 /* main.m */; };
 		1F120B5114D84DB600B9A1D1 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B5014D84DB600B9A1D1 /* GHUnitIOS.framework */; };
-		1F17F76714DC010A0040AA98 /* Cinema.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76614DC010A0040AA98 /* Cinema.m */; };
-		1F17F76A14DC010A0040AA98 /* Showtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76914DC010A0040AA98 /* Showtime.m */; };
-		1F17F76D14DC010A0040AA98 /* Seat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76C14DC010A0040AA98 /* Seat.m */; };
 		1F1DE4A214E5452A00943411 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B1C14D83D9D00B9A1D1 /* UIKit.framework */; };
 		1F1DE4A314E5452A00943411 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B1E14D83D9D00B9A1D1 /* Foundation.framework */; };
 		1F1DE4A414E5452A00943411 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B2014D83D9D00B9A1D1 /* CoreGraphics.framework */; };
@@ -40,15 +36,40 @@
 		1F4451A214ED5550008E1148 /* CinemaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4451A014ED5550008E1148 /* CinemaViewController.m */; };
 		1F4451A314ED5550008E1148 /* CinemaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4451A114ED5550008E1148 /* CinemaViewController.xib */; };
 		1F65803714E940660070839D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B2214D83D9D00B9A1D1 /* CoreData.framework */; };
-		1F65803914E940780070839D /* Seat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76C14DC010A0040AA98 /* Seat.m */; };
-		1F65803A14E940780070839D /* Showtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76914DC010A0040AA98 /* Showtime.m */; };
-		1F65803B14E940780070839D /* Cinema.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F76614DC010A0040AA98 /* Cinema.m */; };
-		1FD3B59714E94E2400926D6D /* Tickets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F120B3014D83D9D00B9A1D1 /* Tickets.xcdatamodeld */; };
 		1FD3B5AA14EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3B5A914EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m */; };
 		1FD3B5B914EBBE7C00926D6D /* TicketsParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FD3B5B814EBBE7C00926D6D /* TicketsParams.plist */; };
 		1FEF3C7814F532D00040A016 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEF3C7714F532D00040A016 /* CoreLocation.framework */; };
 		1FEF3C7C14F53F0E0040A016 /* CLLocationManager+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF3C7B14F53F0E0040A016 /* CLLocationManager+Init.m */; };
+		1FF57B8A14FBC6C400BD4DCA /* Tickets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FF57B8814FBC6C400BD4DCA /* Tickets.xcdatamodeld */; };
+		1FF57B8D14FBC6F600BD4DCA /* Cinema.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF57B8B14FBC6F600BD4DCA /* Cinema.h */; };
+		1FF57B8E14FBC6F600BD4DCA /* Cinema.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF57B8C14FBC6F600BD4DCA /* Cinema.m */; };
+		1FF57B9114FBC6F600BD4DCA /* Seat.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF57B8F14FBC6F600BD4DCA /* Seat.h */; };
+		1FF57B9214FBC6F600BD4DCA /* Seat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF57B9014FBC6F600BD4DCA /* Seat.m */; };
+		1FF57B9514FBC6F700BD4DCA /* Showtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF57B9314FBC6F700BD4DCA /* Showtime.h */; };
+		1FF57B9614FBC6F700BD4DCA /* Showtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF57B9414FBC6F700BD4DCA /* Showtime.m */; };
+		1FF57B9914FBC75300BD4DCA /* libTIcketsModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFEB82914FBB5170003645D /* libTIcketsModel.a */; };
+		1FF57B9A14FBC86900BD4DCA /* Tickets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FF57B8814FBC6C400BD4DCA /* Tickets.xcdatamodeld */; };
+		1FF57B9B14FBC86A00BD4DCA /* Tickets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FF57B8814FBC6C400BD4DCA /* Tickets.xcdatamodeld */; };
+		1FF57B9E14FBC9F800BD4DCA /* libTIcketsModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFEB82914FBB5170003645D /* libTIcketsModel.a */; };
+		1FFEB82A14FBB5170003645D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F120B1E14D83D9D00B9A1D1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1FF57B9714FBC74B00BD4DCA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F120B0F14D83D9D00B9A1D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1FFEB82814FBB5170003645D;
+			remoteInfo = TIcketsModel;
+		};
+		1FF57B9C14FBC9F300BD4DCA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F120B0F14D83D9D00B9A1D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1FFEB82814FBB5170003645D;
+			remoteInfo = TIcketsModel;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1F001E5F14ED0D0F0023A4D3 /* ShowtimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowtimeViewController.h; path = Controller/ShowtimeViewController.h; sourceTree = "<group>"; };
@@ -69,19 +90,12 @@
 		1F120B2C14D83D9D00B9A1D1 /* Tickets-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tickets-Prefix.pch"; sourceTree = "<group>"; };
 		1F120B2D14D83D9D00B9A1D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1F120B2E14D83D9D00B9A1D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1F120B3114D83D9D00B9A1D1 /* Tickets.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tickets.xcdatamodel; sourceTree = "<group>"; };
 		1F120B3C14D846EA00B9A1D1 /* TicketsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F120B4314D846EA00B9A1D1 /* TicketsTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketsTest-Info.plist"; sourceTree = "<group>"; };
 		1F120B4514D846EA00B9A1D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F120B4714D846EA00B9A1D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F120B4914D846EA00B9A1D1 /* TicketsTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TicketsTest-Prefix.pch"; sourceTree = "<group>"; };
 		1F120B5014D84DB600B9A1D1 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = TicketsTest/GHUnitIOS.framework; sourceTree = "<group>"; };
-		1F17F76514DC010A0040AA98 /* Cinema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cinema.h; sourceTree = "<group>"; };
-		1F17F76614DC010A0040AA98 /* Cinema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cinema.m; sourceTree = "<group>"; };
-		1F17F76814DC010A0040AA98 /* Showtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Showtime.h; sourceTree = "<group>"; };
-		1F17F76914DC010A0040AA98 /* Showtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Showtime.m; sourceTree = "<group>"; };
-		1F17F76B14DC010A0040AA98 /* Seat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seat.h; sourceTree = "<group>"; };
-		1F17F76C14DC010A0040AA98 /* Seat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seat.m; sourceTree = "<group>"; };
 		1F1DE4A014E5452A00943411 /* iOSTicketsDatabaseGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTicketsDatabaseGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F1DE4A714E5452A00943411 /* iOSTicketsDatabaseGenerator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOSTicketsDatabaseGenerator-Info.plist"; sourceTree = "<group>"; };
 		1F1DE4A914E5452A00943411 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -101,6 +115,15 @@
 		1FEF3C7714F532D00040A016 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1FEF3C7A14F53F0E0040A016 /* CLLocationManager+Init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Init.h"; sourceTree = "<group>"; };
 		1FEF3C7B14F53F0E0040A016 /* CLLocationManager+Init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Init.m"; sourceTree = "<group>"; };
+		1FF57B8914FBC6C400BD4DCA /* Tickets.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tickets.xcdatamodel; sourceTree = "<group>"; };
+		1FF57B8B14FBC6F600BD4DCA /* Cinema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cinema.h; sourceTree = "<group>"; };
+		1FF57B8C14FBC6F600BD4DCA /* Cinema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cinema.m; sourceTree = "<group>"; };
+		1FF57B8F14FBC6F600BD4DCA /* Seat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seat.h; sourceTree = "<group>"; };
+		1FF57B9014FBC6F600BD4DCA /* Seat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seat.m; sourceTree = "<group>"; };
+		1FF57B9314FBC6F700BD4DCA /* Showtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Showtime.h; sourceTree = "<group>"; };
+		1FF57B9414FBC6F700BD4DCA /* Showtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Showtime.m; sourceTree = "<group>"; };
+		1FFEB82914FBB5170003645D /* libTIcketsModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTIcketsModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFEB82D14FBB5170003645D /* TIcketsModel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TIcketsModel-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF57B9914FBC75300BD4DCA /* libTIcketsModel.a in Frameworks */,
 				1FEF3C7814F532D00040A016 /* CoreLocation.framework in Frameworks */,
 				1F120B1D14D83D9D00B9A1D1 /* UIKit.framework in Frameworks */,
 				1F120B1F14D83D9D00B9A1D1 /* Foundation.framework in Frameworks */,
@@ -131,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF57B9E14FBC9F800BD4DCA /* libTIcketsModel.a in Frameworks */,
 				1F65803714E940660070839D /* CoreData.framework in Frameworks */,
 				1F1DE4A214E5452A00943411 /* UIKit.framework in Frameworks */,
 				1F1DE4A314E5452A00943411 /* Foundation.framework in Frameworks */,
@@ -138,23 +163,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FFEB82614FBB5170003645D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FFEB82A14FBB5170003645D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F001E4A14EC149A0023A4D3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				1F120B3014D83D9D00B9A1D1 /* Tickets.xcdatamodeld */,
-				1F17F76B14DC010A0040AA98 /* Seat.h */,
-				1F17F76C14DC010A0040AA98 /* Seat.m */,
-				1F17F76814DC010A0040AA98 /* Showtime.h */,
-				1F17F76914DC010A0040AA98 /* Showtime.m */,
-				1F17F76514DC010A0040AA98 /* Cinema.h */,
-				1F17F76614DC010A0040AA98 /* Cinema.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		1F001E4B14EC14B70023A4D3 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,8 +204,8 @@
 		1F120B0D14D83D9D00B9A1D1 = {
 			isa = PBXGroup;
 			children = (
-				1FEF3C7714F532D00040A016 /* CoreLocation.framework */,
 				1F120B2414D83D9D00B9A1D1 /* Tickets */,
+				1FFEB82B14FBB5170003645D /* TIcketsModel */,
 				1F120B4114D846EA00B9A1D1 /* TicketsTest */,
 				1F1DE4A514E5452A00943411 /* iOSTicketsDatabaseGenerator */,
 				1F120B1B14D83D9D00B9A1D1 /* Frameworks */,
@@ -200,6 +219,7 @@
 				1F120B1814D83D9D00B9A1D1 /* Tickets.app */,
 				1F120B3C14D846EA00B9A1D1 /* TicketsTest.app */,
 				1F1DE4A014E5452A00943411 /* iOSTicketsDatabaseGenerator.app */,
+				1FFEB82914FBB5170003645D /* libTIcketsModel.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -207,6 +227,7 @@
 		1F120B1B14D83D9D00B9A1D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FEF3C7714F532D00040A016 /* CoreLocation.framework */,
 				1F120B5014D84DB600B9A1D1 /* GHUnitIOS.framework */,
 				1F120B1C14D83D9D00B9A1D1 /* UIKit.framework */,
 				1F120B1E14D83D9D00B9A1D1 /* Foundation.framework */,
@@ -222,7 +243,6 @@
 				1F02048714F2A29800C0FEED /* Tickets.sqlite */,
 				1F001E4C14EC14CA0023A4D3 /* Controller */,
 				1F001E4B14EC14B70023A4D3 /* View */,
-				1F001E4A14EC149A0023A4D3 /* Model */,
 				1F120B2514D83D9D00B9A1D1 /* Supporting Files */,
 			);
 			path = Tickets;
@@ -285,7 +305,43 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1FFEB82B14FBB5170003645D /* TIcketsModel */ = {
+			isa = PBXGroup;
+			children = (
+				1FF57B8814FBC6C400BD4DCA /* Tickets.xcdatamodeld */,
+				1FF57B9314FBC6F700BD4DCA /* Showtime.h */,
+				1FF57B9414FBC6F700BD4DCA /* Showtime.m */,
+				1FF57B8F14FBC6F600BD4DCA /* Seat.h */,
+				1FF57B9014FBC6F600BD4DCA /* Seat.m */,
+				1FF57B8B14FBC6F600BD4DCA /* Cinema.h */,
+				1FF57B8C14FBC6F600BD4DCA /* Cinema.m */,
+				1FFEB82C14FBB5170003645D /* Supporting Files */,
+			);
+			path = TIcketsModel;
+			sourceTree = "<group>";
+		};
+		1FFEB82C14FBB5170003645D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1FFEB82D14FBB5170003645D /* TIcketsModel-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1FFEB82714FBB5170003645D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FF57B8D14FBC6F600BD4DCA /* Cinema.h in Headers */,
+				1FF57B9114FBC6F600BD4DCA /* Seat.h in Headers */,
+				1FF57B9514FBC6F700BD4DCA /* Showtime.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		1F120B1714D83D9D00B9A1D1 /* Tickets */ = {
@@ -299,6 +355,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1FF57B9814FBC74B00BD4DCA /* PBXTargetDependency */,
 			);
 			name = Tickets;
 			productName = Tickets;
@@ -333,11 +390,29 @@
 			buildRules = (
 			);
 			dependencies = (
+				1FF57B9D14FBC9F300BD4DCA /* PBXTargetDependency */,
 			);
 			name = iOSTicketsDatabaseGenerator;
 			productName = iOSTicketsDatabaseGenerator;
 			productReference = 1F1DE4A014E5452A00943411 /* iOSTicketsDatabaseGenerator.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1FFEB82814FBB5170003645D /* TIcketsModel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FFEB83314FBB5170003645D /* Build configuration list for PBXNativeTarget "TIcketsModel" */;
+			buildPhases = (
+				1FFEB82514FBB5170003645D /* Sources */,
+				1FFEB82614FBB5170003645D /* Frameworks */,
+				1FFEB82714FBB5170003645D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TIcketsModel;
+			productName = TIcketsModel;
+			productReference = 1FFEB82914FBB5170003645D /* libTIcketsModel.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -362,6 +437,7 @@
 				1F120B1714D83D9D00B9A1D1 /* Tickets */,
 				1F120B3B14D846EA00B9A1D1 /* TicketsTest */,
 				1F1DE49F14E5452A00943411 /* iOSTicketsDatabaseGenerator */,
+				1FFEB82814FBB5170003645D /* TIcketsModel */,
 			);
 		};
 /* End PBXProject section */
@@ -406,14 +482,11 @@
 			files = (
 				1F120B2B14D83D9D00B9A1D1 /* main.m in Sources */,
 				1F120B2F14D83D9D00B9A1D1 /* AppDelegate.m in Sources */,
-				1F120B3214D83D9D00B9A1D1 /* Tickets.xcdatamodeld in Sources */,
-				1F17F76714DC010A0040AA98 /* Cinema.m in Sources */,
-				1F17F76A14DC010A0040AA98 /* Showtime.m in Sources */,
-				1F17F76D14DC010A0040AA98 /* Seat.m in Sources */,
 				1F001E6214ED0D0F0023A4D3 /* ShowtimeViewController.m in Sources */,
 				1F4451A214ED5550008E1148 /* CinemaViewController.m in Sources */,
 				1F02045814ED792100C0FEED /* SeatViewController.m in Sources */,
 				1FEF3C7C14F53F0E0040A016 /* CLLocationManager+Init.m in Sources */,
+				1FF57B9B14FBC86A00BD4DCA /* Tickets.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,15 +505,36 @@
 				1F1DE4AC14E5452A00943411 /* main.m in Sources */,
 				1F1DE4B014E5452B00943411 /* AppDelegate.m in Sources */,
 				1F1DE4B314E5452B00943411 /* ViewController.m in Sources */,
-				1F65803914E940780070839D /* Seat.m in Sources */,
-				1F65803A14E940780070839D /* Showtime.m in Sources */,
-				1F65803B14E940780070839D /* Cinema.m in Sources */,
-				1FD3B59714E94E2400926D6D /* Tickets.xcdatamodeld in Sources */,
 				1FD3B5AA14EAA3C300926D6D /* UIManagedDocument+CinemaCreating.m in Sources */,
+				1FF57B9A14FBC86900BD4DCA /* Tickets.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FFEB82514FBB5170003645D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FF57B8A14FBC6C400BD4DCA /* Tickets.xcdatamodeld in Sources */,
+				1FF57B8E14FBC6F600BD4DCA /* Cinema.m in Sources */,
+				1FF57B9214FBC6F600BD4DCA /* Seat.m in Sources */,
+				1FF57B9614FBC6F700BD4DCA /* Showtime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1FF57B9814FBC74B00BD4DCA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1FFEB82814FBB5170003645D /* TIcketsModel */;
+			targetProxy = 1FF57B9714FBC74B00BD4DCA /* PBXContainerItemProxy */;
+		};
+		1FF57B9D14FBC9F300BD4DCA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1FFEB82814FBB5170003645D /* TIcketsModel */;
+			targetProxy = 1FF57B9C14FBC9F300BD4DCA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1F120B2714D83D9D00B9A1D1 /* InfoPlist.strings */ = {
@@ -609,6 +703,30 @@
 			};
 			name = Release;
 		};
+		1FFEB83114FBB5170003645D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/TIcketsModel.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TIcketsModel/TIcketsModel-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		1FFEB83214FBB5170003645D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/TIcketsModel.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TIcketsModel/TIcketsModel-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -648,15 +766,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		1FFEB83314FBB5170003645D /* Build configuration list for PBXNativeTarget "TIcketsModel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FFEB83114FBB5170003645D /* Debug */,
+				1FFEB83214FBB5170003645D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		1F120B3014D83D9D00B9A1D1 /* Tickets.xcdatamodeld */ = {
+		1FF57B8814FBC6C400BD4DCA /* Tickets.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				1F120B3114D83D9D00B9A1D1 /* Tickets.xcdatamodel */,
+				1FF57B8914FBC6C400BD4DCA /* Tickets.xcdatamodel */,
 			);
-			currentVersion = 1F120B3114D83D9D00B9A1D1 /* Tickets.xcdatamodel */;
+			currentVersion = 1FF57B8914FBC6C400BD4DCA /* Tickets.xcdatamodel */;
 			path = Tickets.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

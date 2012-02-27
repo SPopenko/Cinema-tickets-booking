@@ -2,7 +2,7 @@
 //  Showtime.m
 //  Tickets
 //
-//  Created by Anton Poluboiarynov on 2/3/12.
+//  Created by Anton Poluboiarynov on 2/27/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
