@@ -103,6 +103,7 @@ const double coordDeltaS = 0.01;
 {
     [_fetchedResultsController release];
     [_managedObjectContext     release];
+    [_locationManager          release];
     
     [super dealloc];
 }
@@ -141,9 +142,7 @@ const double coordDeltaS = 0.01;
     [super viewDidLoad];
     
     self.clearsSelectionOnViewWillAppear = YES;
-    
-    _locationManager = [[CLLocationManager alloc] initWithDelegate:self];
-    [_locationManager startUpdatingLocation];
+
     //This code looks strange, but it provide the easiest way to load data on view load for this code
     if (self.cinema == nil) self.cinema = nil;
 }
@@ -158,6 +157,12 @@ const double coordDeltaS = 0.01;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    if (!_locationManager)
+    {
+        _locationManager = [[CLLocationManager alloc] initWithDelegate:self];
+    }
+    [_locationManager startUpdatingLocation];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -168,6 +173,7 @@ const double coordDeltaS = 0.01;
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [_locationManager stopUpdatingLocation];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -222,45 +228,6 @@ const double coordDeltaS = 0.01;
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

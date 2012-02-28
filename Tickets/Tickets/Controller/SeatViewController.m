@@ -13,8 +13,7 @@
 
 @implementation SeatViewController
 
-//@synthesize fetchedResultsController = _fetchedResultsController;
-@synthesize managedObjectContext     = _managedObjectContext;
+@synthesize managedObjectContext = _managedObjectContext;
 
 @synthesize showtime = _showtime;
 
