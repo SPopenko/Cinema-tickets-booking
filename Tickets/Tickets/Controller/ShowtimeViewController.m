@@ -103,6 +103,7 @@ const double coordDeltaS = 0.01;
 {
     [_fetchedResultsController release];
     [_managedObjectContext     release];
+    [_locationManager          release];
     
     [super dealloc];
 }
@@ -141,9 +142,7 @@ const double coordDeltaS = 0.01;
     [super viewDidLoad];
     
     self.clearsSelectionOnViewWillAppear = YES;
-    
-    _locationManager = [[CLLocationManager alloc] initWithDelegate:self];
-    [_locationManager startUpdatingLocation];
+
     //This code looks strange, but it provide the easiest way to load data on view load for this code
     if (self.cinema == nil) self.cinema = nil;
 }
@@ -158,6 +157,12 @@ const double coordDeltaS = 0.01;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    if (!_locationManager)
+    {
+        _locationManager = [[CLLocationManager alloc] initWithDelegate:self];
+    }
+    [_locationManager startUpdatingLocation];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -168,6 +173,7 @@ const double coordDeltaS = 0.01;
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [_locationManager stopUpdatingLocation];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

@@ -100,8 +100,6 @@ const double coordDelta = 0.01;
     
     self.clearsSelectionOnViewWillAppear = YES;
     
-    _locationManager = [[CLLocationManager alloc] initWithDelegate:self];
-    [_locationManager startUpdatingLocation];
 }
 
 - (void)viewDidUnload
@@ -114,6 +112,13 @@ const double coordDelta = 0.01;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (!_locationManager)
+    {
+        _locationManager = [[CLLocationManager alloc] initWithDelegate:self];
+    }
+    [_locationManager startUpdatingLocation];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -123,6 +128,7 @@ const double coordDelta = 0.01;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [_locationManager stopUpdatingLocation];
     [super viewWillDisappear:animated];
 }
 
@@ -144,6 +150,7 @@ const double coordDelta = 0.01;
     [_locationManager release];
     [_managedObjectContext release];
     [_fetchedResultsController release];
+    
     [super dealloc];
 }
 
